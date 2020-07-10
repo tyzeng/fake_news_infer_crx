@@ -7,3 +7,6 @@
 包含Tensorflow框架建立的谣言识别算法模型，服务器端接受前端请求调用模型推断。
 ### Rumour Recognize Extensions
 谣言识别插件，调用RPC服务实现与服务器的交互，前端消息提醒设计。
+
+注：由于模型太大，单独上传至了Google Drive：https://drive.google.com/file/d/1Dose9PiAC3DTf62iceMKdMRaJVMs-8vN/view?usp=sharing
+模型需要放置在fake_news_infer/weibo_and_t_train_20
