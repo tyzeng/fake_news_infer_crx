@@ -84,6 +84,15 @@ def getPrediction(estimator,tokenizer,in_sentences):
 #     receiver_tensors = {'predictor_inputs': serialized_tf_example}
 #     return tf.estimator.export.ServingInputReceiver(features, receiver_tensors)
 
+def infer(pred_sentences, estimator, tokenizer):
+    predictions = getPrediction(estimator,tokenizer,pred_sentences)
+
+    for sen,probs in predictions:
+        pred = np.argmax(np.array(probs), axis=0)
+        print(sen,label_dict[pred])
+    return label_dict[pred]
+
+
 if __name__ == "__main__":
 
     pred_sentences = ["新型冠状病毒怕热，用过的口罩放到开水里煮可以多次使用",

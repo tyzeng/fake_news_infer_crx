@@ -1,0 +1,51 @@
+{
+    "name": "Rumor Recognize Extensions",
+    "description" : "Rumor Recognize Extensions",
+    "version": "1.0",
+    "manifest_version": 2,
+    "content_security_policy": "script-src 'self' 'unsafe-eval'; object-src 'self'",
+
+    "browser_action": {
+      "default_popup": "popup.html",
+      "default_title": "Rumor Recognize",
+      "default_icon": "icon/yaoyan.png"
+    },
+     // 快捷键打开
+    "commands": {
+      "_execute_browser_action": {
+        "suggested_key": {
+          "default": "Ctrl+Shift+F",
+          "mac": "MacCtrl+Shift+F"
+        },
+        "description": "Opens popup.html"
+      }
+    },
+    "content_scripts": 
+    [
+      {
+        "matches": ["<all_urls>"],
+        "js": ["js/jquery-1.8.3.js", "./bower_components/toastr/toastr.js", "js/content-script.js"],
+        "css": ["./bower_components/toastr/toastr.css"],
+        "run_at": "document_start"
+      }
+    ],
+    "web_accessible_resources": ["js/jquery-1.8.3.js", "bower_components/toastr/toastr.js"],
+    "background":
+    {
+      "scripts": ["js/background.js"]
+    },
+    
+    "permissions":
+    [
+      "contextMenus", // 右键菜单
+      "tabs", // 标签
+      "activeTab",
+      "notifications", // 通知
+      "declarativeContent",
+      "webRequest", // web请求
+      "webRequestBlocking", // 阻塞式web请求
+      "storage", // 插件本地存储
+      "http://*/*", // 可以通过executeScript或者insertCSS访问的网站
+      "https://*/*" // 可以通过executeScript或者insertCSS访问的网站
+    ]
+}
